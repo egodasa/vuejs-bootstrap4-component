@@ -12,7 +12,7 @@ Vue.component('modal-footer', {
 
 Vue.component('modal', {
     props: ['size', 'title', 'id'],
-    template: "<div class=\"modal\" :id=\"id\">" +
+    template: "<div class='modal' :id='id' tabindex='-1' role='dialog'>" +
     			"<div :class=\"'modal-dialog modal-' + size\">" +
 	    			"<div class='modal-content'>" +
 	    				"<slot></slot>" +

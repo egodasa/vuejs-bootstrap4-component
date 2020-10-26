@@ -1,4 +1,4 @@
-Vue.component('bt-form-group', {
+Vue.component('form-group', {
   props: ['label', 'error', 'className'],
   template: "<div :class='\"form-group \" + className'>" +
               "<label>{{ label }}</label>" +

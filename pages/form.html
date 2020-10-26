@@ -6,26 +6,13 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-		<script src="../components/modal.js"></script>
+		<script src="../components/form.js"></script>
 	</head>
 	<body>
-		<div id="aplikasi">
-			<modal id="modal">
-				<modal-title>
-					<h4>Judul Modal</h4>
-				</modal-title>
-				<modal-body>
-					<p>Isi modal</p>
-				</modal-body>
-				<modal-footer>
-					<button type="button" class="btn btn-primary">Save changes</button>
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</modal-footer>
-			</modal>
-
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-			  Munculkan Modal, Klik disini!
-			</button>
+		<div id="aplikasi" class="container">
+			<form-group label="Masukan nama Anda">
+				<input type="text" class="form-control" />
+			</form-group>
 		</div>
 		<script>
 			new Vue({
