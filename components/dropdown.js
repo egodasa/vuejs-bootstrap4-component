@@ -14,7 +14,7 @@ Vue.component('dropdown-item', {
 	    },
 	    target: {
 	      type: String,
-	      default: "_blank"
+	      default: ""
 	    },
 	},
     template: "<a :class='className' :href='link' :style='customStyle' :target='target'><slot></slot></a>"

@@ -1,0 +1,103 @@
+Vue.component('pagination', {
+	props: {
+		className: {
+	      type: String,
+	      default: ""
+	    },
+	    customStyle: {
+	      type: String,
+	      default: ""
+	    },
+	    perPage: {
+	      type: Number,
+	      default: 10
+	    },
+	    totalRecord: {
+	      type: Number,
+	      default: 54
+	    },
+	    previousText: {
+	      type: String,
+	      default: "Previous"
+	    },
+	    nextText: {
+	      type: String,
+	      default: "Next"
+	    },
+	    pageEvent: Function
+	},
+	data: function() {
+		return {
+			currentPage: 1
+		}
+	},
+	methods: {
+		createNewPage: function(pageNum) {
+			return {
+				page: pageNum,
+				class: "page-item"
+			}
+		},
+		nextPage: function() {
+			if(this.currentPage < this.totalPage) {
+				this.currentPage++;
+				this.pageEventChange(this.currentPage);
+			}
+		},
+		previousPage: function() {
+			if(this.currentPage > 0) {
+				this.currentPage--;
+				this.pageEventChange(this.currentPage);
+			}
+		},
+		setCurrentPage(pageNum) {
+			if(pageNum <= this.totalPage - 1 && pageNum >= 0) {
+				this.currentPage = pageNum
+				for(var x = 0; x < this.pageList.length; x++) {
+					this.$set(this.pageList[x], 'class', 'page-item');
+				}
+				this.$set(this.pageList[pageNum], 'class', 'page-item active');
+				// this.pageEvent(pageNum+1);
+			}
+		},
+		pageEventChange: function(pageNum) {
+			this.setCurrentPage(pageNum);
+			this.pageEvent(pageNum+1);
+		}
+	},
+	computed: {
+		pageList: function() {
+			var pageLength = Math.ceil(this.totalRecord/this.perPage);
+			var pageList = []
+			for(var x = 0; x < pageLength; x++) {
+				pageList.push(this.createNewPage(x+1))
+			}
+			return pageList
+		},
+		totalPage: function() {
+			return Math.ceil(this.totalRecord/this.perPage)
+		},
+		previousButtonStatus: function() {
+			return this.currentPage != 0
+		},
+		nextButtonStatus: function() {
+			return this.currentPage != this.totalPage - 1
+		},
+		previousButtonClass: function() {
+			if(this.currentPage != 0) {
+				return "page-item"
+			}
+			return "page-item disabled disabled-events"
+		},
+		nextButtonClass: function() {
+			if(this.currentPage != this.totalPage - 1) {
+				return "page-item"
+			}
+			return "page-item disabled disabled-events"
+		},
+	},
+	mounted: function() {
+		this.setCurrentPage(0);
+	},
+	template: "<nav aria-label='Page navigation'><ul class='pagination'><li :class='previousButtonClass' @click='previousPage()'><a class='page-link' href='#' v-html='previousText'></a></li> <li v-for='(page, index) in pageList' :class='page.class'><a class='page-link' @click='pageEventChange(index)'>{{ page.page }}</a></li><li :class='nextButtonClass' @click='nextPage()' class='page-item'><a class='page-link' href='#' v-html='nextText'></a></li></ul></nav>"
+})

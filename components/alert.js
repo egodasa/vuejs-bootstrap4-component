@@ -1,3 +1,29 @@
+Vue.component('alert-heading', {
+	props: {
+		className: {
+	      type: String,
+	      default: ""
+	    },
+	    customStyle: {
+	      type: String,
+	      default: ""
+	    },
+	},
+	template: "<h4 :class='\"alert-heading \" + className' :style='customStyle'><slot></slot></h4>"
+})
+Vue.component('alert-warning', {
+	props: {
+		className: {
+	      type: String,
+	      default: ""
+	    },
+	    customStyle: {
+	      type: String,
+	      default: ""
+	    },
+	},
+	template: "<div :class='\"alert alert-warning \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+})
 Vue.component('alert-primary', {
 	props: {
 		className: {
@@ -53,7 +79,6 @@ Vue.component('alert-danger', {
 	},
 	template: "<div :class='\"alert alert-danger \" + className' :style='customStyle' role='alert'><slot></slot></div>"
 })
-
 Vue.component('alert-warning', {
 	props: {
 		className: {
