@@ -24,11 +24,15 @@ Vue.component('pagination', {
 	      type: String,
 	      default: "Next"
 	    },
+	    currentPage: {
+	      type: Number,
+	      default: 1
+	    },
 	    pageEvent: Function
 	},
-	data: function() {
+	data: function(){
 		return {
-			currentPage: 1
+			rawCurrentPage: 0
 		}
 	},
 	methods: {
@@ -39,25 +43,28 @@ Vue.component('pagination', {
 			}
 		},
 		nextPage: function() {
-			if(this.currentPage < this.totalPage) {
-				this.currentPage++;
-				this.pageEventChange(this.currentPage);
+			if(this.rawCurrentPage < this.totalPage) {
+				this.rawCurrentPage++;
+				this.pageEventChange(this.rawCurrentPage);
 			}
 		},
 		previousPage: function() {
-			if(this.currentPage > 0) {
-				this.currentPage--;
-				this.pageEventChange(this.currentPage);
+			if(this.rawCurrentPage > 0) {
+				this.rawCurrentPage--;
+				this.pageEventChange(this.rawCurrentPage);
 			}
 		},
 		setCurrentPage(pageNum) {
 			if(pageNum <= this.totalPage - 1 && pageNum >= 0) {
-				this.currentPage = pageNum
+				this.rawCurrentPage = pageNum
+				console.log(this.rawCurrentPage);
 				for(var x = 0; x < this.pageList.length; x++) {
-					this.$set(this.pageList[x], 'class', 'page-item');
+					if(this.rawCurrentPage != x) {
+						this.pageList[x].class = 'page-item';
+					} else {
+						this.pageList[x].class = 'page-item active disabled-events';
+					}
 				}
-				this.$set(this.pageList[pageNum], 'class', 'page-item active');
-				// this.pageEvent(pageNum+1);
 			}
 		},
 		pageEventChange: function(pageNum) {
@@ -78,26 +85,26 @@ Vue.component('pagination', {
 			return Math.ceil(this.totalRecord/this.perPage)
 		},
 		previousButtonStatus: function() {
-			return this.currentPage != 0
+			return this.rawCurrentPage != 0
 		},
 		nextButtonStatus: function() {
-			return this.currentPage != this.totalPage - 1
+			return this.rawCurrentPage != this.totalPage - 1
 		},
 		previousButtonClass: function() {
-			if(this.currentPage != 0) {
+			if(this.rawCurrentPage != 0) {
 				return "page-item"
 			}
 			return "page-item disabled disabled-events"
 		},
 		nextButtonClass: function() {
-			if(this.currentPage != this.totalPage - 1) {
+			if(this.rawCurrentPage != this.totalPage - 1) {
 				return "page-item"
 			}
 			return "page-item disabled disabled-events"
 		},
 	},
-	mounted: function() {
-		this.setCurrentPage(0);
+	created: function() {
+		this.setCurrentPage(this.currentPage-1);
 	},
-	template: "<nav aria-label='Page navigation'><ul class='pagination'><li :class='previousButtonClass' @click='previousPage()'><a class='page-link' href='#' v-html='previousText'></a></li> <li v-for='(page, index) in pageList' :class='page.class'><a class='page-link' @click='pageEventChange(index)'>{{ page.page }}</a></li><li :class='nextButtonClass' @click='nextPage()' class='page-item'><a class='page-link' href='#' v-html='nextText'></a></li></ul></nav>"
+	template: "<nav aria-label='Page navigation'><ul class='pagination'><li :class='previousButtonClass' @click='previousPage()'><a class='page-link' href='#' v-html='previousText'></a></li> <li v-for='(page, index) in pageList' :class='page.class'><a class='page-link' @click='pageEventChange(index)'>{{ page.page }}</a></li><li :class='nextButtonClass' @click='nextPage()'><a class='page-link' href='#' v-html='nextText'></a></li></ul></nav>"
 })
