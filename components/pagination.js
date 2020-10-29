@@ -28,6 +28,10 @@ Vue.component('pagination', {
 	      type: Number,
 	      default: 1
 	    },
+	    displayPage: {
+	      type: Number,
+		  default: 5
+	    },
 	    pageEvent: Function
 	},
 	data: function(){
@@ -63,6 +67,10 @@ Vue.component('pagination', {
 						this.pageList[x].class = 'page-item';
 					} else {
 						this.pageList[x].class = 'page-item active disabled-events';
+					}
+
+					if(x > this.displayPage) {
+						this.pageList[x].class += " d-none";
 					}
 				}
 			}

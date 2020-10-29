@@ -6,8 +6,10 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<script src="../components/pagination.js"></script>
 		<script src="../components/alert.js"></script>
+		<script src="../components/fa-icon.js"></script>
 		<style>
 			.disabled-events {
 				pointer-events: none;
@@ -16,10 +18,12 @@
 	</head>
 	<body>
 		<div id="aplikasi" class="container">
-			<pagination :page-event='bukaHalaman' :total-record=46 :per-page=10 :current-page=3></pagination>
+			<pagination :page-event='bukaHalaman' :total-record=246 :per-page=10 :current-page=3></pagination>
 			<br>
 			<alert-success>
-				<alert-heading>Catatan!</alert-heading>
+				<alert-heading>
+					<fa-icon name='warning'></fa-icon> Catatan!
+				</alert-heading>
 				<p><b>Bagaimana cara agar setiap perubahan paginasi, terjadi sebuah aksi seperti load data ajax dll?</b></p>
 				<ol>
 					<li>Buat sebuah fungsi dengan sebuah parameter. Contoh bisa dilihat dihalaman ini dengan nama fungsi bukaHalaman(pageNum)</li>
