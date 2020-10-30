@@ -1,8 +1,8 @@
 Vue.component('dropdown-item', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
-	      default: "dropdown-item"
+	      default: ""
 	    },
 	    customStyle: {
 	      type: String,
@@ -10,12 +10,20 @@ Vue.component('dropdown-item', {
 	    },
 	    link: {
 	      type: String,
-	      default: "primary"
+	      default: "#"
 	    },
 	    target: {
 	      type: String,
 	      default: ""
 	    },
+	},
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "dropdown-item " + this.addClass
+			}
+			return "dropdown-item"
+		}
 	},
     template: "<a :class='className' :href='link' :style='customStyle' :target='target'><slot></slot></a>"
 })
@@ -26,29 +34,26 @@ Vue.component('dropdown-divider', {
 
 Vue.component('dropdown', {
 	props: {
-		className: {
+		type: {
 	      type: String,
-	      default: "primary"
-	    },
-	    customStyle: {
-	      type: String,
-	      default: ""
+	      required: true
 	    },
 	    text: {
 	      type: String,
 	      default: ""
-	    },
-	    type: {
-	      type: String,
-	      default: "primary"
 	    },
 	    id: {
 	      type: String,
 	      default: Math.round((Math.random() * 10000000000)).toString()
 	    },
 	},
-	template: "<div :class='\"dropdown \" + className'>" +
-				"<button :class='\"btn btn-\" + type + \" dropdown-toggle\"' type='button' :id='id' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>{{ text }}</button>" +
+	computed: {
+		dropdownClass: function() {
+			return "btn btn-" + this.type + " dropdown-toggle"
+		}
+	},
+	template: "<div class='dropdown'>" +
+				"<button :class='dropdownClass' type='button' :id='id' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' v-html='text'></button>" +
 				"<div class='dropdown-menu' :aria-labelledby='id'>" +
 				"<slot></slot>" + 
 				"</div>" +

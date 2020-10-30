@@ -6,26 +6,27 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-		<script src="../components/card.js"></script>
-		<script src="../components/badge.js"></script>
+		<script src="../components/alert.js"></script>
 		<script src="../components/container.js"></script>
 	</head>
 	<body>
-		<div id="aplikasi">
+		<div id="aplikasi" class="container">
+			<alert-success>
+				<alert-heading>Catatan!</alert-heading>
+				Ini alert diluar komponent container
+			</alert-success>
 			<container>
-				<card>
-					<card-header>
-						Bagian Header
-					</card-header>
-					<card-body>
-						Bagian Body
-						<badge-success>Contoh badge</badge-success>
-					</card-body>
-					<card-footer>
-						Bagian Footer
-					</card-footer>
-				</card>
+				<alert-success>
+					<alert-heading>Catatan!</alert-heading>
+					Ini alert didalam komponent container
+				</alert-success>
 			</container>
+			<container-fluid>
+				<alert-success>
+					<alert-heading>Catatan!</alert-heading>
+					Ini alert didalam komponent container fluid
+				</alert-success>
+			</container-fluid>
 		</div>
 		<script>
 			new Vue({

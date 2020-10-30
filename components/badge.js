@@ -1,6 +1,28 @@
+
+Vue.component('badge-warning', {
+	props: {
+		addClass: {
+	      type: String,
+	      default: ""
+	    },
+	    customStyle: {
+	      type: String,
+	      default: ""
+	    },
+	},
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-warning " + this.addClass
+			}
+			return "badge badge-warning"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
+})
 Vue.component('badge-primary', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -9,12 +31,19 @@ Vue.component('badge-primary', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-primary \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-primary " + this.addClass
+			}
+			return "badge badge-primary"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('badge-secondary', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -23,12 +52,20 @@ Vue.component('badge-secondary', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-secondary \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-secondary " + this.addClass
+			}
+			return "badge badge-secondary"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 
 Vue.component('badge-success', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -37,12 +74,19 @@ Vue.component('badge-success', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-success \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-success " + this.addClass
+			}
+			return "badge badge-success"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('badge-danger', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -51,12 +95,19 @@ Vue.component('badge-danger', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-danger \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-danger " + this.addClass
+			}
+			return "badge badge-danger"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('badge-warning', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -65,12 +116,19 @@ Vue.component('badge-warning', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-warning \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-warning " + this.addClass
+			}
+			return "badge badge-warning"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('badge-info', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -79,12 +137,19 @@ Vue.component('badge-info', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-info \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-info " + this.addClass
+			}
+			return "badge badge-info"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('badge-light', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -93,12 +158,19 @@ Vue.component('badge-light', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-light \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-light " + this.addClass
+			}
+			return "badge badge-light"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('badge-dark', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -107,5 +179,13 @@ Vue.component('badge-dark', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"badge badge-dark \" + className' :style='customStyle' role='badge'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "badge badge-dark " + this.addClass
+			}
+			return "badge badge-dark"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })

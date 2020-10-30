@@ -1,6 +1,6 @@
 Vue.component('card-header', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -9,11 +9,19 @@ Vue.component('card-header', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"card-header \" + className' :style='customStyle'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "card-header " + this.addClass
+			}
+			return "card-header"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 Vue.component('card-body', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -22,11 +30,19 @@ Vue.component('card-body', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"card-body \" + className' :style='customStyle'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "card-body " + this.addClass
+			}
+			return "card-body"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 Vue.component('card-footer', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -35,12 +51,20 @@ Vue.component('card-footer', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"card-footer \" + className' :style='customStyle'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "card-footer " + this.addClass
+			}
+			return "card-footer"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 
 Vue.component('card', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -49,5 +73,13 @@ Vue.component('card', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"card \" + className'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "card " + this.addClass
+			}
+			return "card"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })

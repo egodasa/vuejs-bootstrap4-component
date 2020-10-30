@@ -1,6 +1,6 @@
 Vue.component('alert-heading', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -9,11 +9,19 @@ Vue.component('alert-heading', {
 	      default: ""
 	    },
 	},
-	template: "<h4 :class='\"alert-heading \" + className' :style='customStyle'><slot></slot></h4>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert-heading " + this.addClass
+			}
+			return "alert-heading"
+		}
+	},
+	template: "<h4 :class='className' :style='customStyle'><slot></slot></h4>"
 })
 Vue.component('alert-warning', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -22,11 +30,19 @@ Vue.component('alert-warning', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-warning \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-warning " + this.addClass
+			}
+			return "alert alert-warning"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 Vue.component('alert-primary', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -35,12 +51,19 @@ Vue.component('alert-primary', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-primary \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-primary " + this.addClass
+			}
+			return "alert alert-primary"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('alert-secondary', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -49,12 +72,20 @@ Vue.component('alert-secondary', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-secondary \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-secondary " + this.addClass
+			}
+			return "alert alert-secondary"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 
 Vue.component('alert-success', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -63,12 +94,19 @@ Vue.component('alert-success', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-success \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-success " + this.addClass
+			}
+			return "alert alert-success"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('alert-danger', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -77,11 +115,19 @@ Vue.component('alert-danger', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-danger \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-danger " + this.addClass
+			}
+			return "alert alert-danger"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 Vue.component('alert-warning', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -90,12 +136,19 @@ Vue.component('alert-warning', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-warning \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-warning " + this.addClass
+			}
+			return "alert alert-warning"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('alert-info', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -104,12 +157,19 @@ Vue.component('alert-info', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-info \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-info " + this.addClass
+			}
+			return "alert alert-info"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('alert-light', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -118,12 +178,19 @@ Vue.component('alert-light', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-light \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-light " + this.addClass
+			}
+			return "alert alert-light"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
-
 Vue.component('alert-dark', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
@@ -132,5 +199,13 @@ Vue.component('alert-dark', {
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"alert alert-dark \" + className' :style='customStyle' role='alert'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "alert alert-dark " + this.addClass
+			}
+			return "alert alert-dark"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })

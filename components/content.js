@@ -1,10 +1,22 @@
 Vue.component('page-title', {
 	props: {
-		className: {
+		addClass: {
+	      type: String,
+	      default: ""
+	    },
+	    customStyle: {
 	      type: String,
 	      default: ""
 	    },
 	},
-	template: "<div :class='\"page-title \" + className'><slot></slot></div>"
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "page-title " + this.addClass
+			}
+			return "page-title"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'><slot></slot></div>"
 })
 
