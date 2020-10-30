@@ -1,6 +1,10 @@
 Vue.component('form-group', {
 	props: {
-		className: {
+		addClass: {
+	      type: String,
+	      default: ""
+	    },
+	    customStyle: {
 	      type: String,
 	      default: ""
 	    },
@@ -13,9 +17,17 @@ Vue.component('form-group', {
 	      default: ""
 	    }
 	},
-	template: "<div :class='\"form-group \" + className'>" +
-              "<label>{{ label }}</label>" +
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "form-group " + this.addClass
+			}
+			return "form-group"
+		}
+	},
+	template: "<div :class='className' :style='customStyle'>" +
+              "<label v-html='label'></label>" +
               "<slot></slot>" +
               "<small style='color: red; font-size: 11px'>{{ error }}</small>" +
-            "</div>"
+              "</div>"
 })

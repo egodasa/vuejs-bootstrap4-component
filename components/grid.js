@@ -9,10 +9,18 @@ Vue.component('column', {
 })
 Vue.component('row', {
 	props: {
-		className: {
+		addClass: {
 	      type: String,
 	      default: ""
 	    },
+	},
+	computed: {
+		className: function() {
+			if(this.addClass != "") {
+				return "row " + this.addClass
+			}
+			return "row"
+		}
 	},
 	template: "<div :class='\"row \" + className'><slot></slot></div>"
 })
